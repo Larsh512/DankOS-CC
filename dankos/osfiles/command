@@ -1,0 +1,10 @@
+shell.run("clear")
+term.setCursorPos(1,1)
+term.setBackgroundColor(colors.black)
+term.setTextColor(colors.blue)
+print("Welcome to the Terminal!")
+print("Type Back to go back to the menu.")
+term.setTextColor(colors.white)
+w,h = term.getSize()
+print("---------------------------------")
+

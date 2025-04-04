@@ -1,0 +1,108 @@
+os.pullEvent = os.pullEventRaw
+local file = fs.open("osfiles/version.dat","r") -- Open Version Number.
+		local versiontext = file.readLine(1)
+      local version = tonumber(file.readLine(2))
+      local versionname = file.readLine(3)
+file.close()
+local w,h = term.getSize()
+ 
+function printCentered( y,s )
+   local x = math.floor((w - string.len(s)) / 2)
+   term.setCursorPos(x,y)
+   term.clearLine()
+   term.write( s )
+end
+ 
+function ReturnFromProgram() -- Code taken from the MineXP code, Allows you to return from the program into the programs list.
+   term.write("Press any key to continue")
+	os.pullEvent("key")
+	shell.run("/osfiles/.programs")
+	return false
+end
+
+local nOption = 1
+-- Draw the menu.
+local function drawMenu()
+   term.setBackgroundColor(colors.lightBlue)
+   term.setTextColor(colors.white)
+   term.clear()
+   term.setCursorPos(1,1)
+   term.write("DankOS Version: ".. versiontext)
+term.setCursorPos(1,2)
+shell.run("id")
+ 
+   term.setCursorPos(w-11,1)
+   if nOption == 1 then
+   term.write("MineXP")
+elseif nOption == 2 then
+   term.write("StdGUI")
+elseif nOption == 3 then
+   term.write("Undefined")
+elseif nOption == 4 then
+   term.write("Exit")
+else
+end
+   term.setBackgroundColor(colors.black)
+   term.setTextColor(colors.yellow)
+end
+ 
+--GUI
+term.clear()
+local function drawFrontend()
+   term.setBackgroundColor(colors.lightBlue)
+   term.setTextColor(colors.white)
+   printCentered( math.floor(h/2) - 3, "")
+   printCentered( math.floor(h/2) - 2, "Programs Menu" )
+   printCentered( math.floor(h/2) - 1, "")
+   printCentered( math.floor(h/2) + 0, ((nOption == 1) and "[ MineXP    ]") or " MineXP    " ) -- figure out a way to open programs by a list, or a folder ig.
+   printCentered( math.floor(h/2) + 1, ((nOption == 2) and "[ StdGUI    ]") or " StdGUI    " )
+   printCentered( math.floor(h/2) + 2, ((nOption == 3) and "[ Undefined ]") or " Undefined " )
+   printCentered( math.floor(h/2) + 3, ((nOption == 4) and "[ Exit      ]") or " Exit      " )
+   printCentered( math.floor(h/2) + 4, "")
+   term.setBackgroundColor(colors.black)
+   term.setTextColor(colors.yellow)
+end
+ 
+--Display
+drawMenu()
+drawFrontend()
+ 
+while true do
+	local e,p = os.pullEvent("key")
+		if p == keys.up then
+			if nOption > 1 then
+				nOption = nOption - 1
+				drawMenu()
+				drawFrontend()
+			end
+		elseif p == keys.down then
+			if nOption < 4 then
+				nOption = nOption + 1
+				drawMenu()
+				drawFrontend()
+			end
+		elseif p == keys.enter then
+			break
+		end
+end
+term.clear()
+ 
+--Conditions
+if nOption  == 1 then -- MineXP, The file browser for DankOS.
+   shell.run("/programs/minexp")
+   -- Call ReturnFromProgram to return to the programs list.
+   ReturnFromProgram()
+elseif nOption == 2 then
+   shell.run("/programs/stdgui.lua")
+   ReturnFromProgram()
+elseif nOption == 3 then
+elseif nOption == 4 then
+   term.setCursorPos(1,1)
+   term.clear()
+   shell.run("/.menu")
+else
+   term.clear()
+   term.setCursorPos(1,1)
+   term.write("Error Code 1, nOption Value Surpassed max value, nOption value is: ".. nOption)
+end
+
