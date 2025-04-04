@@ -1,1 +1,1 @@
-shell.run("/.menu")
+shell.run("/menu")
