@@ -99,7 +99,7 @@ elseif nOption == 3 then
 elseif nOption == 4 then
    term.setCursorPos(1,1)
    term.clear()
-   shell.run("/.menu")
+   shell.run("/menu")
 else
    term.clear()
    term.setCursorPos(1,1)
