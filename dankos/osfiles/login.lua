@@ -126,7 +126,7 @@ function login() --Authenticate users
 		if pass == password then
 			cls()
 			pos(1,1)
-			shell.run(".menu.lua")
+			shell.run("menu.lua")
 			return
 		else
 			drawTimedMsg("Incorrect password!",2,19,8)
