@@ -10,5 +10,8 @@ StdGUI with a custom server (feel free to submit DANKOS specific programs to me,
 https://github.com/LDDestroier/STD-GUI/
 MineXP+ by Missooni and Reimar
 https://github.com/Missooni/MineExplorerPlus
+Gui made with:
+https://www.youtube.com/watch?v=XPpMkDfzwB8&t=1866s
+(homelab's cc os tutorial)
 
 Currently it's just a hobby project for fun, Have fun with this ig (also its just a dankpods reference m8)
