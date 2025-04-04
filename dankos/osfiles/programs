@@ -27,7 +27,7 @@ end
 function ReturnFromProgram() -- Code taken from the MineXP code, Allows you to return from the program into the programs list.
    term.write("Press any key to continue")
 	os.pullEvent("key")
-	shell.run("/osfiles/.programs")
+	shell.run("/osfiles/programs")
 	return false
 end
 
