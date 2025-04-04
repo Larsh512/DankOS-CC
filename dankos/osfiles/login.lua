@@ -142,10 +142,10 @@ end
 function loginPocket()
 	if user == nil or #user <= 1 then
 		drawTimedMsgPocket("Must enter user!",2,6,8)
-		shell.run("login.lua")
+		shell.run("osfiles/login.lua")
 	elseif pass == nil or #pass <= 1 then
 		drawTimedMsgPocket("Must enter pass!",2,6,8)
-		shell.run("login.lua")
+		shell.run("osfiles/login.lua")
 	end
 	
 	if fs.exists("account/"..user..".dat") then
@@ -159,11 +159,11 @@ function loginPocket()
 			print("UNLOCKED")
 		else
 			drawTimedMsgPocket("Incorrect password!",2,5,8)
-			shell.run("login.lua")
+			shell.run("osfiles/login.lua")
 		end
 	else
 		drawTimedMsgPocket("No user found!",2,8,8)
-		shell.run("login.lua")
+		shell.run("osfiles/login.lua")
 	end
 end
 
@@ -225,24 +225,24 @@ function create() --Create user accounts
 
 	if user == nil or #user <= 1 then
 		drawTimedMsg("Must enter username!",2,18,8)
-		shell.run("login.lua","create")
+		shell.run("osfiles/login.lua","create")
 	elseif pass == nil or #pass <= 1 then
 		drawTimedMsg("Must enter password!",2,18,8)
-		shell.run("login.lua","create")
+		shell.run("osfiles/login.lua","create")
 	elseif pass ~= confirm then
 		drawTimedMsg("Password don't match!",2,17,8)
-		shell.run("login.lua","create")
+		shell.run("osfiles/login.lua","create")
 	end
 	
 	if fs.exists("account/"..user..".dat") then
 		drawTimedMsg("Username taken!",2,21,8)
-		shell.run("login.lua","create")
+		shell.run("osfiles/login.lua","create")
 	else
 		file = fs.open("account/"..user..".dat","w")
 		file.write(pass)
 		file.close()
 		drawTimedMsg("Account created!",2,21,8)
-		shell.run("login.lua")
+		shell.run("osfiles/login.lua")
 	end
 end
 
