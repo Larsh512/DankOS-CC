@@ -84,9 +84,9 @@ term.clear()
  
 --Conditions
 if nOption  == 1 then
-   shell.run("osfiles/.command")
+   shell.run("osfiles/command")
 elseif nOption == 2 then
-   shell.run("osfiles/.programs")
+   shell.run("osfiles/programs")
 elseif nOption == 3 then
    os.shutdown()
 elseif nOption == 4 then
@@ -105,7 +105,7 @@ elseif nOption == 4 then
    else
       print("Not valid!")
       sleep(1)
-      shell.run("/.menu")
+      shell.run("/menu")
    end
    if logoffanswer == true then
       print("Logging off...")
@@ -114,7 +114,7 @@ elseif nOption == 4 then
    term.setCursorPos(1,1)
    shell.run("/osfiles/login.lua")
    else
-      shell.run("/.menu")
+      shell.run("/menu")
    end
 else
    term.clear()
