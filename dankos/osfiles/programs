@@ -1,20 +1,9 @@
 os.pullEvent = os.pullEventRaw
 local file = fs.open("osfiles/version.dat","r") -- Open Version Number.
-local lines = {}
-while true do
-   local line = file.readLine()
- 
-   -- If line is nil then we've reached the end of the file and should stop
-   if not line then break end
- 
-   lines[#lines + 1] = line
- end
- 
-		local versiontext = lines[1]
-      local version = lines[2]
-      local versionname = lines[3]
+		local versiontext = file.readLine(1)
+      local version = tonumber(file.readLine(2))
+      local versionname = file.readLine(3)
 file.close()
-
 local w,h = term.getSize()
  
 function printCentered( y,s )
